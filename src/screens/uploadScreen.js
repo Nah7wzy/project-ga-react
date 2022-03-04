@@ -7,6 +7,13 @@ import 'react-circular-progressbar/dist/styles.css';
 const FileUploadScreen = (props) => {
     const [multipleFiles, setMultipleFiles] = useState('');
     const [carId, setCarId] =  useState('');
+    const [make, setMake] =  useState('');
+    const [year, setYear] =  useState('');
+    const [price, setPrice] =  useState('');
+    const [transmission, setTransmission] =  useState('');
+    const [condition, setCondition] =  useState('');
+    const [comment, setComment] =  useState('');
+    const [mileage, setMileage] =  useState('');
     const [multipleProgress, setMultipleProgress] = useState(0);
 
 
@@ -26,6 +33,13 @@ const FileUploadScreen = (props) => {
     const UploadMultipleFiles = async () => {
         const formData = new FormData();
         formData.append('carId', carId);
+        formData.append('make', make);
+        formData.append('year', year);
+        formData.append('price', price);
+        formData.append('transmission', transmission);
+        formData.append('mileage', mileage);
+        formData.append('condition', condition);
+        formData.append('comment', comment);
         for (let i = 0; i < multipleFiles.length; i++) {
             formData.append('files', multipleFiles[i]);                      
         }
@@ -40,6 +54,34 @@ const FileUploadScreen = (props) => {
                        <div className="col-6">
                             <label >Title</label>
                             <input type="text" onChange={(e) => setCarId(e.target.value) } placeholder="enter CarId" className="form-control"/>
+                       </div>
+                       <div className="col-6">
+                            <label >Make</label>
+                            <input type="text" onChange={(e) => setMake(e.target.value) } placeholder="enter Make" className="form-control"/>
+                       </div>
+                       <div className="col-6">
+                            <label >Year</label>
+                            <input type="text" onChange={(e) => setYear(e.target.value) } placeholder="enter Year" className="form-control"/>
+                       </div>
+                       <div className="col-6">
+                            <label >Price</label>
+                            <input type="text" onChange={(e) => setPrice(e.target.value) } placeholder="enter Price" className="form-control"/>
+                       </div>
+                       <div className="col-6">
+                            <label >Transmission</label>
+                            <input type="text" onChange={(e) => setTransmission(e.target.value) } placeholder="Manual or Automatic" className="form-control"/>
+                       </div>
+                       <div className="col-6">
+                            <label >Mileage</label>
+                            <input type="text" onChange={(e) => setMileage(e.target.value) } placeholder="enter Mileage" className="form-control"/>
+                       </div>
+                       <div className="col-6">
+                            <label >Condition</label>
+                            <input type="text" onChange={(e) => setCondition(e.target.value) } placeholder="enter Condition" className="form-control"/>
+                       </div>
+                       <div className="col-6">
+                            <label >Comment</label>
+                            <input type="text" onChange={(e) => setComment(e.target.value) } placeholder="enter Comment" className="form-control"/>
                        </div>
                        <div className="col-6">
                         <div className="form-group">

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import FileUploadScreen from './screens/uploadScreen';
-import {getSingleFiles, getMultipleFiles} from './data/api';
+import {getMultipleFiles} from './data/api';
 
 function App() {;
   const [multipleFiles, setMultipleFiles] = useState([]);
