@@ -49,7 +49,7 @@ const FileUploadScreen = (props) => {
     return (
         <div className="row mt-3">
             
-            <div className="col-6">
+            <div className="col-12">
                    <div className="row">
                        <div className="col-6">
                             <label >Title</label>

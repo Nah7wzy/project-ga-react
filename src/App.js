@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import FileUploadScreen from './screens/uploadScreen';
-import { getMultipleFiles } from './data/api';
+import { getMultipleFiles, removeImageapi } from './data/api';
 import { Car, CarContainer, CarImage, RemoveCarButton } from './styles/CarCard.styled';
+import axios from 'axios';
 
 function App() {
   const [multipleFiles, setMultipleFiles] = useState([]);
+
+  const removeImage = async(files) => {
+    await files.forEach(element => {
+      removeImageapi(element.filePath)
+    });
+    
+  }
 
   const getMultipleFilesList = async () => {
     try {
@@ -31,9 +39,11 @@ function App() {
       <CarContainer>
         {multipleFiles.map((element, index) =>
           <Car key={element._id}>
-            <h3 className="text-danger font-weight-bold">{element.make}</h3>
+            <h3 className="font-weight-bold">{element.carId}. {element.make} {element.year}</h3>
             <CarImage src={`http://localhost:5000/${element.files[0].filePath}`} height="200" alt="img" />
-            <RemoveCarButton>Remove Car</RemoveCarButton>
+            <h5 className='text-center'>{element.price}</h5>
+            <h5 className='text-center'>{element.transmission}</h5>
+            <RemoveCarButton onClick={()=>removeImage(element.files)}>Remove Car</RemoveCarButton>
           </Car>
         )}
       </CarContainer>

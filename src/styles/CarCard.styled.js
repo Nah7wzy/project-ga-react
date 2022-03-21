@@ -8,9 +8,9 @@ export const CarContainer = styled.div`
 `;
 
 export const Car = styled.div`
-  height: 300px;
+  height: auto;
   width: 300px;
-  background-color: rgba(50,50,150,0.4);
+  background-color: white;
   border-radius: 5px;
   display: flex;
   flex-direction: column;

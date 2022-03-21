@@ -18,3 +18,11 @@ export const getMultipleFiles = async () => {
         throw error;
     }
 }
+
+export const removeImageapi = async (filepath) => {
+    try {
+        axios.post(apiUrl + 'deleteImage', { filepath });
+    } catch (error) {
+        console.log(error)
+    }
+}
