@@ -26,3 +26,11 @@ export const removeImageapi = async (filepath) => {
         console.log(error)
     }
 }
+
+export const deleteCar = async (carId) => {
+    try {
+        axios.delete(apiUrl + 'deleteCar', { carId });
+    } catch (error) {
+        console.log(error)
+    }
+}

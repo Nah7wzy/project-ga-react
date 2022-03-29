@@ -5,11 +5,18 @@ export const CarContainer = styled.div`
   gap: 10px 10px;
   grid-template-columns: auto auto auto;
   justify-content: space-evenly;
+  
+  @media screen and (max-width: 750px) and (min-width: 500px) {
+    grid-template-columns: auto auto
+  }
+  @media screen and (max-width: 500px) {
+    grid-template-columns: auto
+  }
 `;
 
 export const Car = styled.div`
-  height: auto;
-  width: 300px;
+  height: 100%;
+  width: 100%;
   background-color: white;
   border-radius: 5px;
   display: flex;
@@ -18,6 +25,9 @@ export const Car = styled.div`
 `;
 
 export const CarImage = styled.img`
+width: 100%;
+height: auto;
+
     align-self: center;
     justify-self: center;
 `;

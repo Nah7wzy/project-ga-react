@@ -115,8 +115,12 @@ const FileUploadScreen = (props) => {
                         <input type="text" onChange={(e) => setComment(e.target.value)} placeholder="-" className="form-control" />
                     </div>
                     <div className="col-6">
-                        <label >Contact</label>
-                        <input type="text" onChange={(e) => setContact(e.target.value)} placeholder="-" className="form-control" />
+                        <label>Contact</label>
+                        <select onChange={(e) => setContact(e.target.value)} className="form-control">
+                            <option value="0911518970">0911518970</option>
+                            <option value="0911451031">0911451031</option>
+                            <option value="0911207702">0911207702</option>
+                        </select>
                     </div>
                     <div className="col-6">
                         <div className="form-group">
