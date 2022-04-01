@@ -12,7 +12,8 @@ function App() {
     await files.forEach(element => {
       removeImageapi(element.filePath)
     });
-    deleteCar(carId)
+    await deleteCar(carId)
+    window.location.reload();
   }
 
   const getMultipleFilesList = async () => {

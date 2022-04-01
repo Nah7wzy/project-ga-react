@@ -29,7 +29,8 @@ export const removeImageapi = async (filepath) => {
 
 export const deleteCar = async (carId) => {
     try {
-        axios.delete(apiUrl + 'deleteCar', { carId });
+        await axios.post(apiUrl + 'deleteCar', { carId });
+        console.log(carId)
     } catch (error) {
         console.log(error)
     }
