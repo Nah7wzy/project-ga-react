@@ -41,7 +41,7 @@ function App() {
         {multipleFiles.map((element, index) =>
           <Car key={element._id}>
             <h3 className="font-weight-bold">{element.carId}. {element.make} {element.year}</h3>
-            <CarImage src={`http://localhost:5000/${element.files[0].filePath}`} height="200" alt="img" />
+            <CarImage src={`https://getzauto.herokuapp.com/${element.files[0].filePath}`} height="200" alt="img" />
             <h5 className='text-center'>{element.price}</h5>
             <h5 className='text-center'>{element.transmission}</h5>
             <RemoveCarButton onClick={()=>removeImage(element.files, element.carId)}>Remove Car</RemoveCarButton>
