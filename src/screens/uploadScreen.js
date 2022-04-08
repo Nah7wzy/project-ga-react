@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { singleFileUpload, multipleFilesUpload } from '../data/api';
+import {multipleFilesUpload } from '../data/api';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -52,6 +52,7 @@ const FileUploadScreen = (props) => {
         for (let i = 0; i < multipleFiles.length; i++) {
             formData.append('files', multipleFiles[i]);
         }
+        // await multipleFilesUpload(formData, mulitpleFileOptions);
         await multipleFilesUpload(formData, mulitpleFileOptions);
         props.getMultiple();
     }
