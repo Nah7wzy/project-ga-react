@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:5000/cars/';
+const apiUrl = 'https://getzauto.herokuapp.com/cars/';
 
 
 export const multipleFilesUpload = async (data, options) => {
@@ -28,20 +28,12 @@ export const removeImageapi = async (filepath) => {
     }
 }
 
-export const deleteCar = async (carId) => {
+export const deleteCar = async (carId, public_id) => {
     try {
-        await axios.post(apiUrl + 'deleteCar', { carId });
+        await axios.post(apiUrl + 'deleteCar', { carId,  public_id});
         console.log(carId)
     } catch (error) {
         console.log(error)
     }
 }
 
-export const findCar = async (carId) => {
-    try {
-        await axios.post(apiUrl + 'findCar', { carId });
-        console.log(carId)
-    } catch (error) {
-        console.log(error)
-    }
-}

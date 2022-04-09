@@ -11,10 +11,10 @@ const FileUploadScreen = (props) => {
     const [model, setModel] = useState('')
     const [year, setYear] = useState('');
     const [price, setPrice] = useState('');
-    const [transmission, setTransmission] = useState('');
-    const [type, setType] = useState('');
+    const [transmission, setTransmission] = useState('Manual');
+    const [type, setType] = useState('All');
     const [loan, setLoan] = useState('');
-    const [contact, setContact] = useState('');
+    const [contact, setContact] = useState('0911518970');
     const [condition, setCondition] = useState('');
     const [comment, setComment] = useState('');
     const [mileage, setMileage] = useState('');
