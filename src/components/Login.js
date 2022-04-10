@@ -5,7 +5,6 @@ import {
     FormContainer,
     Holder,
     InputForm,
-    LoginButton,
     LoginContainer,
 } from "../styles/Login.styled";
 

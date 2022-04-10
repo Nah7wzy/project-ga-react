@@ -9,7 +9,6 @@ import { deleteCar, getMultipleFiles, getCarsAPI } from '../data/api';
 import FileUploadScreen from './uploadScreen';
 
 import {
-    ActionWrapper,
     Pagination,
     BackToTop,
   } from "../styles/Herosection.style";
@@ -37,6 +36,15 @@ function LandingPage() {
             console.log(error);
         }
     }
+    useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+
+    return function cleanup() {
+      window.removeEventListener("resize", () =>
+        setWindowWidth(window.innerWidth)
+      );
+    };
+  }, []);
     useEffect(() => {
         const getCars = async () => {
           // To resume loader
