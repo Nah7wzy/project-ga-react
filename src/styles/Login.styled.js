@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Holder = styled.div`
-  background-color: beige;
+  // background-color: beige;
+  
   height: 100vh;
   display: flex;
   flex-direction: row;
