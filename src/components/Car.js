@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 
 import {
   CarsWrapper,
@@ -10,10 +8,8 @@ import {
   CarImage,
   CarDate,
   CarDescription,
-  CarDescriptionParagraphs,
   CarDescriptionGroup,
   CarFooter,
-  ActionButton,
 } from "../styles/Car.style";
 
 import {
@@ -53,14 +49,8 @@ function Car({ cars, sortUtil, updateSortUtil, removeCar }) {
             {cars.map(
               (
                 {
-                  comment,
-                  commission,
-                  condition,
-                  contact,
                   files: images,
-                  loan,
                   make,
-                  mileage,
                   model,
                   price,
                   transmission,
@@ -93,6 +83,10 @@ function Car({ cars, sortUtil, updateSortUtil, removeCar }) {
                                 maximumFractionDigits: 0,
                               }).format(price)}
                             </p>
+                          </div>
+                          <div>
+                            
+                            <p>{transmission || "N/A"}</p>
                           </div>
                          
                         </CarDescriptionGroup>

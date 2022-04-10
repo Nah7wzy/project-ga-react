@@ -132,7 +132,7 @@ const FileUploadScreen = (props) => {
                 </div>
                 <div className="row">
                     <div className="col-10">
-                        <button type="button" onClick={() => UploadMultipleFiles()} className="btn btn-danger">Upload</button>
+                        <button type="button" onClick={() => UploadMultipleFiles()} className="btn btn-primary">Upload</button>
                     </div>
                     <div className="col-2">
                         <CircularProgressbar

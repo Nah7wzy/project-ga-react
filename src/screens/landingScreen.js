@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css'
 // import { Car, CarContainer, CarImage, RemoveCarButton } from '../styles/CarCard.styled';
-import axios from 'axios';
 import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 
@@ -58,7 +57,7 @@ function LandingPage() {
 
         <>
         <div className="container">
-        <h3 className="text-danger font-weight-bolder border-bottom text-center">Upload Car</h3>
+        <h3 className="text-primary font-weight-bolder border-bottom text-center">Upload Car</h3>
         <FileUploadScreen getMultiple={() => getMultipleFilesList()} />
       </div>
                   {cars && (
