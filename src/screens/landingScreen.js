@@ -3,9 +3,10 @@ import '../App.css'
 // import { Car, CarContainer, CarImage, RemoveCarButton } from '../styles/CarCard.styled';
 import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
+import swal from 'sweetalert';
 
 
-import { deleteCar, getMultipleFiles, getCarsAPI } from '../data/api';
+import { deleteCar, getCarsAPI } from '../data/api';
 import FileUploadScreen from './uploadScreen';
 
 import {
@@ -25,11 +26,12 @@ function LandingPage() {
 
         await deleteCar(carId, public_id);
         // window.location.reload();
+        swal("Done!", "Car Removed Successfuly", "success")
     }
 
     const getMultipleFilesList = async () => {
         try {
-            const fileslist = await getMultipleFiles();
+            const fileslist = await getCarsAPI();
             setMultipleFiles(fileslist);
             console.log(multipleFiles);
         } catch (error) {
