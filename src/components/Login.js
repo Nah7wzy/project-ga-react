@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { loginUser } from "../data/api";
 
 import {
     FormContainer,
@@ -20,9 +21,18 @@ export default function Login() {
         setInputs((values) => ({ ...values, [name]: value }));
     };
 
-    const handleSubmit = (event) => {
-        // event.preventDefault();
-        console.log("these are the inputs: ", inputs);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const res = await loginUser(inputs.password);
+            // console.log("res has been returned", res);
+            if (res)
+                window.location.assign('/landing')
+            else
+                alert("Incorrect Username or password!")
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const togglePassword = () => {
@@ -63,10 +73,7 @@ export default function Login() {
 
 
 
-                        <Link to="/landing">
-                            {/* <LoginButton type="submit" onSubmit={handleSubmit} /> */}
-                            <input type="submit" onSubmit={handleSubmit} />
-                        </Link>
+                        <LoginButton type="submit" onSubmit={handleSubmit} />
                     </FormContainer>
                 </LoginContainer>
             </Holder>

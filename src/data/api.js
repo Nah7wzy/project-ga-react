@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://getzauto.herokuapp.com/cars/';
+const apiUrl = 'http://localhost:5000/cars/';
 
 
 export const multipleFilesUpload = async (data, options) => {
@@ -12,10 +12,10 @@ export const multipleFilesUpload = async (data, options) => {
 }
 
 export const getMultipleFiles = async () => {
-    try{
-        const {data} = await axios.get(apiUrl + 'getMultipleFiles');
+    try {
+        const { data } = await axios.get(apiUrl + 'getMultipleFiles');
         return data;
-    }catch(error){
+    } catch (error) {
         throw error;
     }
 }
@@ -30,10 +30,19 @@ export const removeImageapi = async (filepath) => {
 
 export const deleteCar = async (carId, public_id) => {
     try {
-        await axios.post(apiUrl + 'deleteCar', { carId,  public_id});
+        await axios.post(apiUrl + 'deleteCar', { carId, public_id });
         console.log(carId)
     } catch (error) {
         console.log(error)
     }
 }
 
+export const loginUser = async (password) => {
+    try {
+        console.log("this is the passwod: ", password)
+        const res = await axios.post(apiUrl + 'login', { password })
+        return res;
+    } catch (error) {
+        console.log(error);
+    }
+}
