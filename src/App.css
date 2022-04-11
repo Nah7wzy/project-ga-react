@@ -1,3 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  /* spacing */
+  --spacing-xsmall: 3px;
+  --spacing-small: 5px;
+  --spacing-base: 10px;
+  --spacing-regular: 20px;
+  --spacing-medium: 30px;
+  --spacing-large: 40px;
+  --spacing-xlarge: 60px;
+
+  /* colors */
+
+  --clr-grey-100: #fafafa;
+  --clr-grey-200: #e0e0e0;
+  --clr-grey-300: #c9c9c9;
+  --clr-grey-400: #bfbfbf;
+  --clr-grey-500: #8c8c8c;
+  --clr-grey-600: #595959;
+  --clr-grey-700: #434343;
+  --clr-grey-800: #262626;
+  --clr-grey-900: #1f1f1f;
+
+  --clr-primary-100: #e8e8fa;
+  --clr-primary-200: #cbcdfb;
+  --clr-primary-300: #a5a9f3;
+  --clr-primary-400: #4950da;
+  --clr-primary-500: #2b2b97;
+  --clr-primary-600: #232667;
+  --clr-primary-700: #1a1a2e;
+
+  /* typography */
+  font-family: "Poppins", sans-serif;
+  --text-xsmall: 12px;
+  --text-small: 14px;
+  --text-base: 16px;
+  --text-regular: 20px;
+  --text-medium: 24px;
+  --text-large: 32px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#root {
+  padding: var(--spacing-regular);
+  padding-bottom: var(--spacing-xlarge);
+
+  background: var(--clr-primary-100);
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: var(--spacing-base);
+  }
+}
+
 .App {
   text-align: center;
 }

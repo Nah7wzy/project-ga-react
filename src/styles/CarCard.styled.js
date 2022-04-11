@@ -33,12 +33,26 @@ height: auto;
 `;
 
 export const RemoveCarButton = styled.button`
-    background-color: #808080;
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 2px solid white;
-    border-radius: 3px;
-    /* align-self: flex-end; */
-    justify-self: center;
+flex-grow: 1;
+margin-right: var(--spacing-base);
+
+font-size: var(--text-base);
+
+cursor: pointer;
+text-decoration: none;
+border: none;
+background:  pink;
+color: darkred;
+padding-top: 4px;
+padding-bottom: 4px;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+& svg {
+  width: 20px;
+  margin-right: var(--spacing-small);
+}
+
 `;
