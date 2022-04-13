@@ -32,6 +32,7 @@ export const FormContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  
 `;
 
 export const InputForm = styled.input`
