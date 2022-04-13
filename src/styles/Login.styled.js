@@ -19,6 +19,7 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding-top: 35px;
   :hover {
       border-radius: 10px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -31,6 +32,7 @@ export const FormContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  
 `;
 
 export const InputForm = styled.input`

@@ -42,16 +42,10 @@ export default function Login() {
         <>
             <Holder>
                 <LoginContainer>
-                    <h1>LOGIN</h1>
+                    <h2>LOGIN</h2>
                     <FormContainer onSubmit={handleSubmit}>
-                        <label>Email</label>
-                        <InputForm
-                            type="email"
-                            name="email"
-                            value={inputs.email || ""}
-                            onChange={handleChange}
-                        />
-                        <br />
+                        
+                        
                         <label>Password</label>
                         <InputForm
                             type={passwordShown ? "text" : "password"}
