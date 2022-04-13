@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { loginUser } from "../data/api";
 
 import {
@@ -49,7 +48,7 @@ export default function Login() {
                         <InputForm
                             type="email"
                             name="email"
-                            value={inputs.email || ""}
+                            value={inputs.email || "admin@gmail.com"}
                             onChange={handleChange}
                         />
                         <br />

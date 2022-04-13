@@ -13,12 +13,13 @@ export const Holder = styled.div`
 export const LoginContainer = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
-  height: 25rem;
+  height: 28rem;
   width: 25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding-top: 30px;
   :hover {
       border-radius: 10px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.1);
