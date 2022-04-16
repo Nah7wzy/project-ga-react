@@ -10,6 +10,7 @@ import { deleteCar, getCarsAPI } from '../data/api';
 import FileUploadScreen from './uploadScreen';
 
 import {
+    ActionWrapper,
     Pagination,
     BackToTop,
   } from "../styles/Herosection.style";
@@ -38,6 +39,37 @@ function LandingPage() {
             console.log(error);
         }
     }
+
+     const handleFilter = async () => {
+    let options = ["start", "end", "min", "max", "transmission"];
+
+    options.forEach((option) => {
+      filterRules[option] = document.querySelector(`[name=${option}]`)?.value;
+    });
+
+    filterRules.keyword = document.querySelector("[name='search']")?.value;
+    filterRules.loan = document.querySelector("[name='loan'")?.checked;
+
+    setFilterRules({ ...filterRules });
+    setPageNumber(1);
+  };
+
+  const clearFilter = async () => {
+    let options = ["start", "end", "min", "max", "transmission", "search"];
+
+    options.forEach((option) => {
+      if (document.querySelector(`[name=${option}]`)) {
+        document.querySelector(`[name=${option}]`).value = "";
+      }
+    });
+
+    if (document.querySelector("[name='loan']")) {
+      document.querySelector("[name='loan']").checked = false;
+    }
+
+    setFilterRules({});
+  };
+  
     useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
 
@@ -70,6 +102,26 @@ function LandingPage() {
         <h3 className="text-primary font-weight-bolder border-bottom text-center">Upload Car</h3>
         <FileUploadScreen getMultiple={() => getMultipleFilesList()} />
       </div>
+            <ActionWrapper>
+        <form
+          action=""
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleFilter();
+          }}
+        >
+          <input type="search" name="search" placeholder="Enter keywords..." />
+          <div className="actions">
+            <input type="submit" value="Search" className="actions__submit" />
+            <button onClick={clearFilter} className="actions__clear">
+              Clear
+            </button>
+          </div>
+        </form>
+
+
+      </ActionWrapper>
+
                   {cars && (
         <>
           {cars.data.length ? (
