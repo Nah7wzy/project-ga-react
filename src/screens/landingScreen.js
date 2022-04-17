@@ -25,9 +25,24 @@ function LandingPage() {
 
     const removeCar = async (carId, public_id) => {
 
-        await deleteCar(carId, public_id);
+        // await deleteCar(carId, public_id);
         // window.location.reload();
-        swal("Done!", "Car Removed Successfuly", "success")
+        // swal("Done!", "Car Removed Successfuly", "success")
+        swal({
+  title: "Are you sure?",
+  icon: "warning",
+  buttons: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    deleteCar(carId, public_id);
+    swal("Successfully Removed!", {
+      icon: "success",
+    });
+  } else {
+    swal("Car not deleted!");
+  }
+});
     }
 
     const getMultipleFilesList = async () => {
