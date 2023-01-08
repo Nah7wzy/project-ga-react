@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://getzauto7.herokuapp.com/cars/';
+const apiUrl = 'http://getzcarsellbackend.onrender.com/';
 
 
 export const multipleFilesUpload = async (data, options) => {
