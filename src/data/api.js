@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'http://getzcarsellbackend.onrender.com/';
+const apiUrl = 'http://getzcarsellbackend.onrender.com/cars/';
 
 
 export const multipleFilesUpload = async (data, options) => {
