@@ -99,3 +99,130 @@
     transform: rotate(360deg);
   }
 }
+
+/* Loading Indicator */
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #3f51b5;
+  font-weight: bold;
+}
+
+/* Car Grid Layout */
+.cars-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
+.sort-container {
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sort-container label {
+  font-weight: 500;
+  margin-right: 10px;
+  color: var(--clr-grey-700);
+  font-size: 15px;
+}
+
+.sort-select {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background-color: var(--clr-primary-100);
+  font-size: 14px;
+  color: var(--clr-grey-700);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 180px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23434343%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px top 50%;
+  background-size: 10px auto;
+  padding-right: 30px;
+}
+
+.sort-select:hover,
+.sort-select:focus {
+  border-color: var(--clr-primary-300);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(73, 80, 218, 0.1);
+}
+
+.sort-count {
+  margin-left: auto;
+  background-color: var(--clr-primary-300);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive styles for sort container */
+@media screen and (max-width: 650px) {
+  .sort-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .sort-container label {
+    margin-bottom: 8px;
+  }
+
+  .sort-select {
+    width: 100%;
+    min-width: unset;
+    margin-bottom: 12px;
+  }
+
+  .sort-count {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+}
+
+.car-item {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.car-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.car-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fallback-image {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  color: #999;
+  font-style: italic;
+}

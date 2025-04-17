@@ -1,16 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CarContainer = styled.div`
   display: grid;
-  gap: 10px 10px;
-  grid-template-columns: auto auto auto;
-  justify-content: space-evenly;
-  
-  @media screen and (max-width: 750px) and (min-width: 500px) {
-    grid-template-columns: auto auto
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  width: 100%;
+
+  @media screen and (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
   }
-  @media screen and (max-width: 500px) {
-    grid-template-columns: auto
+
+  @media screen and (max-width: 650px) {
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -25,34 +27,34 @@ export const Car = styled.div`
 `;
 
 export const CarImage = styled.img`
-width: 100%;
-height: auto;
-
-    align-self: center;
-    justify-self: center;
+  width: 100%;
+  height: auto;
+  align-self: center;
+  justify-self: center;
 `;
 
 export const RemoveCarButton = styled.button`
-flex-grow: 1;
-margin-right: var(--spacing-base);
+  flex-grow: 1;
+  margin-right: var(--spacing-base);
+  font-size: var(--text-base);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: pink;
+  color: darkred;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
 
-font-size: var(--text-base);
+  &:hover {
+    background-color: #ffcccb;
+  }
 
-cursor: pointer;
-text-decoration: none;
-border: none;
-background:  pink;
-color: darkred;
-padding-top: 4px;
-padding-bottom: 4px;
-
-display: flex;
-justify-content: center;
-align-items: center;
-
-& svg {
-  width: 20px;
-  margin-right: var(--spacing-small);
-}
-
+  & svg {
+    width: 20px;
+    margin-right: var(--spacing-small);
+  }
 `;
