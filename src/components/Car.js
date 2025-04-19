@@ -1,6 +1,5 @@
 import React, { memo, useState, useCallback } from "react";
 import {
-  CarsWrapper,
   CarDetails,
   CarTitle,
   CarDate,

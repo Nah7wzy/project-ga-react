@@ -21,7 +21,6 @@ function LandingPage() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [apiReady, setApiReady] = useState(false);
 
   // Check authentication status periodically
   useEffect(() => {
@@ -159,7 +158,6 @@ function LandingPage() {
         }
 
         setCars(carsList);
-        setApiReady(true);
       } catch (err) {
         if (!isMounted) return;
 
@@ -167,9 +165,12 @@ function LandingPage() {
         setError(err.message || "Failed to fetch cars");
 
         // Set empty data state to prevent UI errors, but only if no data exists yet
-        if (!cars) {
-          setCars({ data: [], amountOfCars: 0, itemsPerPage: 12 });
-        }
+        setCars((prevCars) => {
+          if (!prevCars) {
+            return { data: [], amountOfCars: 0, itemsPerPage: 12 };
+          }
+          return prevCars;
+        });
       } finally {
         if (isMounted) {
           setIsLoading(false);
