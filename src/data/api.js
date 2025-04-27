@@ -131,9 +131,50 @@ setInterval(() => {
 
 export const multipleFilesUpload = async (data, options) => {
   try {
-    const response = await api.post("multipleFiles", data, options);
+    // First ensure API is initialized
+    if (!apiInitialized) {
+      await initializeAPI();
+    }
+
+    // Check if user is authenticated
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("Authentication token missing. Please log in again.");
+      return {
+        success: false,
+        message: "Authentication token missing. Please log in again.",
+      };
+    }
+
+    // Log the files being sent for debugging
+    if (data.getAll && typeof data.getAll === "function") {
+      const files = data.getAll("files");
+      console.log(`Uploading ${files.length} files`, files);
+    }
+
+    // Create a direct axios request without going through the API instance
+    // This avoids potential issues with interceptors or base URL configuration
+    const response = await axios({
+      method: "post",
+      url: "https://ga-server-1763.onrender.com/cars/multipleFiles",
+      data: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // Let the browser set the correct Content-Type for FormData
+      },
+      onUploadProgress: options?.onUploadProgress,
+    });
+
+    console.log("File upload successful:", response.data);
     return response.data;
   } catch (error) {
+    console.error("Error in multipleFilesUpload:", error);
+
+    // Additional debugging
+    if (error.response) {
+      console.error("Server response:", error.response.data);
+    }
+
     return handleApiError(error, "Failed to upload files");
   }
 };
