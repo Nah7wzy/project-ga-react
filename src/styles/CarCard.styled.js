@@ -33,6 +33,32 @@ export const CarImage = styled.img`
   justify-self: center;
 `;
 
+export const EditCarButton = styled.button`
+  flex-grow: 1;
+  margin-right: var(--spacing-base);
+  font-size: var(--text-base);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: #e6f7ff;
+  color: #0066cc;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #cceeff;
+  }
+
+  & svg {
+    width: 20px;
+    margin-right: var(--spacing-small);
+  }
+`;
+
 export const RemoveCarButton = styled.button`
   flex-grow: 1;
   margin-right: var(--spacing-base);

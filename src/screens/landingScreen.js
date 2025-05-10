@@ -5,7 +5,13 @@ import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 import Swal from "sweetalert2";
 
-import { deleteCar, getCarsAPI, logout, isAuthenticated } from "../data/api";
+import {
+  deleteCar,
+  getCarsAPI,
+  logout,
+  isAuthenticated,
+  editCar,
+} from "../data/api";
 import FileUploadScreen from "./uploadScreen";
 
 import {
@@ -56,6 +62,32 @@ function LandingPage() {
       } catch (err) {
         console.error("Error removing car:", err);
         Swal.fire("Error!", err.message || "Failed to delete car", "error");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [pageNumber, filterRules]
+  );
+
+  const updateCar = useCallback(
+    async (carId, carData) => {
+      try {
+        setIsLoading(true);
+
+        const response = await editCar(carId, carData);
+
+        if (response && response.error) {
+          throw new Error(response.message || "Failed to update car");
+        }
+
+        // Refresh cars list
+        const updatedCars = await getCarsAPI(pageNumber, filterRules);
+        setCars(updatedCars);
+
+        Swal.fire("Updated!", "Car has been updated successfully.", "success");
+      } catch (err) {
+        console.error("Error updating car:", err);
+        Swal.fire("Error!", err.message || "Failed to update car", "error");
       } finally {
         setIsLoading(false);
       }
@@ -366,6 +398,7 @@ function LandingPage() {
                 sortUtil={filterRules}
                 updateSortUtil={setFilterRules}
                 removeCar={removeCar}
+                editCar={updateCar}
               />
 
               {windowWidth < 768 && <BackToTop onClick={scrollToTop} />}

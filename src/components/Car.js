@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from "react";
+import React, { memo, useState, useCallback, useRef } from "react";
 import {
   CarDetails,
   CarTitle,
@@ -13,11 +13,13 @@ import {
 import {
   CarContainer as StyledCarContainer,
   RemoveCarButton,
+  EditCarButton,
 } from "../styles/CarCard.styled";
 import Swal from "sweetalert2";
+import EditCarModal from "./EditCarModal";
 
 // Individual car item component - memoized for performance
-const CarItem = memo(({ car, onRemove }) => {
+const CarItem = memo(({ car, onRemove, onEdit }) => {
   const {
     files: images,
     make,
@@ -29,6 +31,8 @@ const CarItem = memo(({ car, onRemove }) => {
     _id,
   } = car;
   const [imageError, setImageError] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const itemRef = useRef(null);
 
   // Format currency
   const formattedPrice = new Intl.NumberFormat("en-GB", {
@@ -61,8 +65,39 @@ const CarItem = memo(({ car, onRemove }) => {
     });
   }, [_id, pids, onRemove]);
 
+  // Open edit modal
+  const handleEdit = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowEditModal(true);
+  }, []);
+
+  // Close edit modal
+  const handleCloseModal = useCallback(() => {
+    setShowEditModal(false);
+  }, []);
+
+  // Handle edit submission
+  const handleSubmitEdit = useCallback(
+    (updatedCar) => {
+      if (typeof onEdit === "function") {
+        onEdit(_id, updatedCar);
+        setShowEditModal(false);
+      } else {
+        console.error("onEdit is not a function", onEdit);
+        Swal.fire(
+          "Error",
+          "Could not update car due to a technical issue.",
+          "error"
+        );
+        setShowEditModal(false);
+      }
+    },
+    [_id, onEdit]
+  );
+
   return (
-    <div className="car-item">
+    <div className="car-item" ref={itemRef}>
       <div className="car-content">
         <CarImageContainer>
           {imageError ? (
@@ -92,12 +127,21 @@ const CarItem = memo(({ car, onRemove }) => {
             </CarDescriptionGroup>
           </CarDescription>
           <CarFooter>
+            <EditCarButton onClick={handleEdit}>Edit Car</EditCarButton>
             <RemoveCarButton onClick={confirmRemove}>
               Remove Car
             </RemoveCarButton>
           </CarFooter>
         </CarDetails>
       </div>
+
+      {showEditModal && (
+        <EditCarModal
+          car={car}
+          onClose={handleCloseModal}
+          onSubmit={handleSubmitEdit}
+        />
+      )}
     </div>
   );
 });
@@ -105,7 +149,20 @@ const CarItem = memo(({ car, onRemove }) => {
 CarItem.displayName = "CarItem";
 
 // Main Car component
-function Car({ cars, sortUtil, updateSortUtil, removeCar }) {
+function Car({ cars, sortUtil, updateSortUtil, removeCar, editCar }) {
+  // Make sure editCar is available
+  const editCarHandler = useCallback(
+    (carId, updatedData) => {
+      if (typeof editCar === "function") {
+        editCar(carId, updatedData);
+      } else {
+        console.error("editCar function is not available!", editCar);
+        Swal.fire("Error", "Edit functionality is not available", "error");
+      }
+    },
+    [editCar]
+  );
+
   // Handle sort change
   const handleSortChange = useCallback(
     (e) => {
@@ -150,7 +207,12 @@ function Car({ cars, sortUtil, updateSortUtil, removeCar }) {
 
       <StyledCarContainer>
         {cars.map((car) => (
-          <CarItem key={car._id} car={car} onRemove={removeCar} />
+          <CarItem
+            key={car._id}
+            car={car}
+            onRemove={removeCar}
+            onEdit={editCarHandler}
+          />
         ))}
       </StyledCarContainer>
     </div>
