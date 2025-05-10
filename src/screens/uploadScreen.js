@@ -42,6 +42,7 @@ const FileUploadScreen = () => {
   };
 
   const resetForm = () => {
+    // Reset all state variables
     setCarId("");
     setMake("");
     setModel("");
@@ -57,11 +58,14 @@ const FileUploadScreen = () => {
     setMultipleFiles("");
     setMultipleProgress(0);
 
-    // Reset form input fields
+    // Reset text input fields
     document.querySelectorAll('input[type="text"]').forEach((input) => {
       input.value = "";
     });
-    document.querySelector('input[type="file"]').value = "";
+
+    // Reset file input
+    const fileInput = document.querySelector('input[type="file"]');
+    if (fileInput) fileInput.value = "";
   };
 
   const UploadMultipleFiles = async () => {
@@ -143,6 +147,7 @@ const FileUploadScreen = () => {
             <label>CarID</label>
             <input
               type="text"
+              value={carId}
               onChange={(e) => setCarId(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -152,6 +157,7 @@ const FileUploadScreen = () => {
             <label>Make</label>
             <input
               type="text"
+              value={make}
               onChange={(e) => setMake(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -161,6 +167,7 @@ const FileUploadScreen = () => {
             <label>Model</label>
             <input
               type="text"
+              value={model}
               onChange={(e) => setModel(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -170,6 +177,7 @@ const FileUploadScreen = () => {
             <label>Year</label>
             <input
               type="text"
+              value={year}
               onChange={(e) => setYear(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -179,6 +187,7 @@ const FileUploadScreen = () => {
             <label>Price</label>
             <input
               type="text"
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -188,6 +197,7 @@ const FileUploadScreen = () => {
             <label>Loan</label>
             <input
               type="text"
+              value={loan}
               onChange={(e) => setLoan(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -196,6 +206,7 @@ const FileUploadScreen = () => {
           <div className="col-6">
             <label>Transmission</label>
             <select
+              value={transmission}
               onChange={(e) => setTransmission(e.target.value)}
               className="form-control"
             >
@@ -206,6 +217,7 @@ const FileUploadScreen = () => {
           <div className="col-6">
             <label>Type</label>
             <select
+              value={type}
               onChange={(e) => setType(e.target.value)}
               className="form-control"
             >
@@ -221,6 +233,7 @@ const FileUploadScreen = () => {
             <label>Mileage</label>
             <input
               type="text"
+              value={mileage}
               onChange={(e) => setMileage(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -230,6 +243,7 @@ const FileUploadScreen = () => {
             <label>Condition</label>
             <input
               type="text"
+              value={condition}
               onChange={(e) => setCondition(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -239,6 +253,7 @@ const FileUploadScreen = () => {
             <label>Comment</label>
             <input
               type="text"
+              value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="-"
               className="form-control"
@@ -247,6 +262,7 @@ const FileUploadScreen = () => {
           <div className="col-6">
             <label>Contact</label>
             <select
+              value={contact}
               onChange={(e) => setContact(e.target.value)}
               className="form-control"
             >

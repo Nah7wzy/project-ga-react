@@ -11,3 +11,10 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Check if app is already running and add modal-root if not present
+if (!document.getElementById("modal-root")) {
+  const modalRoot = document.createElement("div");
+  modalRoot.id = "modal-root";
+  document.body.appendChild(modalRoot);
+}

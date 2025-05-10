@@ -210,6 +210,39 @@ export const deleteCar = async (carId, public_id) => {
   }
 };
 
+export const editCar = async (carId, carData) => {
+  try {
+    // Ensure API is initialized
+    if (!apiInitialized) {
+      await initializeAPI();
+    }
+
+    // Check if user is authenticated
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("Authentication token missing. Please log in again.");
+      return {
+        success: false,
+        message: "Authentication token missing. Please log in again.",
+      };
+    }
+
+    console.log("Updating car with ID:", carId, "Data:", carData);
+
+    const response = await api.put(`edit/${carId}`, carData);
+    console.log("Car update successful:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error in editCar:", error);
+
+    if (error.response) {
+      console.error("Server response:", error.response.data);
+    }
+
+    return handleApiError(error, "Failed to update car");
+  }
+};
+
 export const loginUser = async (username, password) => {
   try {
     // Validate input parameters
